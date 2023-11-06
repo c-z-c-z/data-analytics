@@ -1,19 +1,12 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[ ]:
-
 
 #This file contains original code that I wrote for the purpose of this project
 #It was written to obtain specific formats/inputs I needed for other functions
 #or to create functions that I needed to perform the analyses I was interested in
 
-
-# In[ ]:
-
-
 #Rearranging .value_counts() output based on specific label order
-
 def ordered_counts(df, col, order):
     counts = []
     for item in order:
@@ -21,10 +14,11 @@ def ordered_counts(df, col, order):
     return counts
 
 
-# In[ ]:
-
-
 #Statistical functions
+
+#I'm aware that you can do these tests with scipy.stats
+#I'm not entirely sure why I chose to construct them from scratch back then
+#I wouldn't do that now, but here they are
 
 #Z-tests of proportion -- one and two sample
 
@@ -83,9 +77,6 @@ def get_obs_freq(cat1lvls, cat2lvls, grouped_data):
 #similarly to how I wrote the get_heatmap function below
 
 
-# In[ ]:
-
-
 #Probabilities of each level of an individual variable
 #rounded to 3 decimal places
 
@@ -95,9 +86,6 @@ def get_probs(data, levels):
         prob_dict[level] = (round(data[level][0]/(data[level][0]+data[level][1]),3), 
                            round(data[level][1]/(data[level][0]+data[level][1]),3))
     return prob_dict
-
-
-# In[ ]:
 
 
 #Dictionaries of frequencies for heatmaps
@@ -114,9 +102,6 @@ def freq_dict(grouped_data, key_labels, value_labels):
             else:
                 freqs[lab][lab2] = grouped_data[lab][lab2]
     return freqs
-
-
-# In[ ]:
 
 
 #Heatmaps in Appendix C were generated using this function
